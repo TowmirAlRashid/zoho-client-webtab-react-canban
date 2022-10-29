@@ -3,6 +3,8 @@ import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import CategoryHead from "./components/CategoryHead";
 import CustomCard from "./components/Card";
+import data from './data.js';
+import NoEngagement from "./components/NoEngagement";
 
 
 const Search = styled('div')(({ theme }) => ({        // div that holds the searchbox
@@ -112,26 +114,26 @@ function App() {
               <CategoryHead
                 name="CIM Development"
                 percantage="30"
-                revenue="101,000,000.00"
-                numOfEngagements={6}
+                revenue={data?.filter(singleData => singleData?.category === "cim_development")?.reduce((prev, element) => {
+                  return prev += element?.currency;
+                }, 0)}
+                numOfEngagements={data?.filter(singleData => singleData?.category === "cim_development")?.length}
               />
-
-              <CustomCard 
-                projectName="Project Blue Ocean"
-                owner="Brian Perry"
-                ownerCompany="Horizon Underground INC. -"
-                ownerDetails="Bobbian Fair"
-                currency="25,000,000.00"
-                date="Dec 1, 2023"
-              />
-
-              <CustomCard 
-                projectName="Project Mustang"
-                owner="Brian Franco"
-                ownerCompany="Horizon Underground INC. -"
-                ownerDetails="Bobbian Fair"
-                date="Dec 1, 2023"
-              />
+              {
+                data?.filter(singleData => singleData?.category === "cim_development")?.length > 0 ?
+                data?.filter((singleData) => singleData?.category === "cim_development").map(singleData => (
+                  <CustomCard
+                    key={singleData?.id} 
+                    projectName={singleData?.projectName}
+                    owner={singleData?.owner}
+                    ownerCompany={singleData?.ownerCompany}
+                    ownerDetails={singleData?.ownerDetails}
+                    currency={singleData?.currency}
+                    date={singleData?.date}
+                  />
+                )) :
+                <NoEngagement />
+              }
             </Box>
 
             <Box
@@ -143,9 +145,26 @@ function App() {
               <CategoryHead
                 name="Marketing"
                 percantage="40"
-                revenue="110,850,000.00"
-                numOfEngagements={6}
+                revenue={data?.filter(singleData => singleData?.category === "marketing")?.reduce((prev, element) => {
+                  return prev += element?.currency;
+                }, 0)}
+                numOfEngagements={data?.filter(singleData => singleData?.category === "marketing")?.length}
               />
+              {
+                data?.filter(singleData => singleData?.category === "marketing")?.length > 0 ?
+                data?.filter((singleData) => singleData?.category === "marketing").map(singleData => (
+                  <CustomCard 
+                    key={singleData?.id} 
+                    projectName={singleData?.projectName}
+                    owner={singleData?.owner}
+                    ownerCompany={singleData?.ownerCompany}
+                    ownerDetails={singleData?.ownerDetails}
+                    currency={singleData?.currency}
+                    date={singleData?.date}
+                  />
+                )) :
+                <NoEngagement />
+              }
             </Box>
 
             <Box
@@ -157,9 +176,26 @@ function App() {
               <CategoryHead
                 name="Negotiations"
                 percantage="50"
-                revenue="31,377,000.00"
-                numOfEngagements={4}
+                revenue={data?.filter(singleData => singleData?.category === "negotiations")?.reduce((prev, element) => {
+                  return prev += element?.currency;
+                }, 0)}
+                numOfEngagements={data?.filter(singleData => singleData?.category === "negotiations")?.length}
               />
+              {
+                data?.filter(singleData => singleData?.category === "negotiations")?.length > 0 ?
+                data?.filter((singleData) => singleData?.category === "negotiations").map(singleData => (
+                  <CustomCard 
+                    key={singleData?.id} 
+                    projectName={singleData?.projectName}
+                    owner={singleData?.owner}
+                    ownerCompany={singleData?.ownerCompany}
+                    ownerDetails={singleData?.ownerDetails}
+                    currency={singleData?.currency}
+                    date={singleData?.date}
+                  />
+                )) :
+                <NoEngagement />
+              }
             </Box>
 
             <Box
@@ -171,10 +207,26 @@ function App() {
               <CategoryHead
                 name="Due Diligence"
                 percantage="60"
-                revenue="8,900,000.00"
-                numOfEngagements={3}
+                revenue={data?.filter(singleData => singleData?.category === "due_diligence")?.reduce((prev, element) => {
+                  return prev += element?.currency;
+                }, 0)}
+                numOfEngagements={data?.filter(singleData => singleData?.category === "due_diligence")?.length}
               />
-
+              {
+                data?.filter(singleData => singleData?.category === "due_diligence")?.length > 0 ?
+                data?.filter((singleData) => singleData?.category === "due_diligence").map(singleData => (
+                  <CustomCard 
+                    key={singleData?.id} 
+                    projectName={singleData?.projectName}
+                    owner={singleData?.owner}
+                    ownerCompany={singleData?.ownerCompany}
+                    ownerDetails={singleData?.ownerDetails}
+                    currency={singleData?.currency}
+                    date={singleData?.date}
+                  />
+                )) :
+                <NoEngagement />
+              }
             </Box>
 
             <Box
@@ -187,24 +239,26 @@ function App() {
               <CategoryHead
                 name="Definitive Agreements"
                 percantage="80"
-                revenue="0.00"
-                numOfEngagements={0}
+                revenue={data?.filter(singleData => singleData?.category === "definitive_agreements")?.reduce((prev, element) => {
+                  return prev += element?.currency;
+                }, 0)}
+                numOfEngagements={data?.filter(singleData => singleData?.category === "definitive_agreements")?.length}
               />
-
-              <Box                                            // div to show when no engagements are available
-                sx={{
-                  width: '100%',
-                  height: '80%',
-                  backgroundColor: '#e5e9ee',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }}
-              >
-                <Typography>
-                  No Engagements found.
-                </Typography>
-              </Box>
+              {
+                data?.filter(singleData => singleData?.category === "definitive_agreements")?.length > 0 ?
+                data?.filter((singleData) => singleData?.category === "definitive_agreements").map(singleData => (
+                  <CustomCard 
+                    key={singleData?.id} 
+                    projectName={singleData?.projectName}
+                    owner={singleData?.owner}
+                    ownerCompany={singleData?.ownerCompany}
+                    ownerDetails={singleData?.ownerDetails}
+                    currency={singleData?.currency}
+                    date={singleData?.date}
+                  />
+                )) :
+                <NoEngagement />
+              }
             </Box>
           </Paper>
         </Box>

@@ -18,7 +18,9 @@ const CategoryHead = ({ name, percantage, revenue, numOfEngagements }) => {
             sx={{
                 display: 'flex',
                 justifyContent: 'flex-start',
-                gap: "5px"
+                gap: "5px",
+                width: "90%",
+                margin: "0 auto"
             }}
         >
             <Typography fontWeight="bold">{name}</Typography>
@@ -30,7 +32,9 @@ const CategoryHead = ({ name, percantage, revenue, numOfEngagements }) => {
             sx={{
                 display: 'flex',
                 justifyContent: 'flex-start',
-                gap: "5px"
+                gap: "5px",
+                width: "90%",
+                margin: "0 auto"
             }}
         >
             <Typography fontWeight="bold">{`$${revenue}`}</Typography>
